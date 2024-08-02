@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>August</title>
+</head>
+<body>
+  <div class="startForm">
+    <div class="startLetter">
+      <div class="contentLetter"></div>
+      <img class="myAI" src="" alt="">
+
+      <div class="sticker"></div>
+      <button class="recieve"> <i class="fa-solid  fa-paw"></i></button>
+    </div>
+  </div>
+
+  <div class="backgroundParty">
+ 
+    <div class="letterForm">
+      <input type="checkbox" id="mess">
+      <div class="content">
+        <div class="mainContent"></div>
+        <div class="img1"><img class="img" src="" alt=""></div>
+     </div> 
+      <label class="designBox" for="mess"></label>
+    </div>
+
+
+  <script >
+      const contentLetterSrart_actived = "Vẫn chưa tới giờ mở thư đâuu ~.~" 
+let imgStart = document.querySelector(".myAI"); 
+imgStart.src = "./img/getmesss.png";
+const splitContentLetterSrart_actived = contentLetterSrart_actived.split("");
+// Chuyen trang
+let recieve = document.querySelector('.recieve')
+let isCanClick = false;
+
+
+setTimeout(myTimeOut, 2000);
+//Hiệu ứng gõ chữ cho phần mở đầu của bức thư
+function myTimeOut() { 
+    isCanClick = false;
+    document.querySelector(".contentLetter").innerHTML = "";
+    document.querySelector(".startLetter").classList.add("active")
+    setTimeout(() => {
+        splitContentLetterSrart_actived.forEach((val, index) => {
+            setTimeout(() => {
+                document.querySelector(".contentLetter").innerHTML += val;
+                if (index == contentLetterSrart_actived.length - 1) {
+                    setTimeout(() => {
+                        isCanClick = true;
+                        recieve.setAttribute("style", "opacity: 1; transition: .5s; cursor: grab")
+                        recieve.classList.add("recieve_Show");
+                    }, 1000)
+                }
+            }, 50 * index)
+        })
+    }, 1000)
+}
+
+recieve.addEventListener('click', () =>{
+  if(isCanClick){
+    window.location.href = "tdufutfu";
+  }
+})
+
+  </script>
+</body>
+</html>

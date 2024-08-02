@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>August</title>
+  <style>
+      .swal-icon--custom img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+  </style>
+</head>
+<body>
+  
+  <div class="backgroundParty">
+    <audio class="song" id="audio" controls loop>
+      <source src="./audio/sgn.mp3"></source>
+    </audio>
+
+    <div class="letterForm">
+      <input type="checkbox" id="mess">
+      <div class="content">
+        <div class="mainContent">
+
+          <p class="mainContent_text"></p>
+          <div class="mainContent_send hiden">
+            <p class="mainContent_send_header"></p>
+            <form class="mainContent_send_form">
+              <label></label>
+              <textarea class="mainContent_textarea"></textarea>
+              <button type="button" class="mainContent_button recieve"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+          
+
+        </div>
+        <div class="img1"><img class="img" src="" alt=""></div>
+      </div>
+      <label class="designBox" id="play" for="mess"></label>
+    </div>
+  </div>
+  <script src="./js/sweetalert.min.js"></script>
+<script >
+let mainContent_text = document.querySelector(".mainContent_text");
+let mainContent_send = document.querySelector(".mainContent_send");
+let mainContent_send_header = document.querySelector(".mainContent_send_header");
+let recieve = document.querySelector(".recieve");
+const mainContentLetter = " MaI YEU Trinh Tran Phuong Tuan :<" 
+let imgLetter = document.querySelector(".img");
+imgLetter.src = "./img/end.png"; 
+var timeouts = [];
+
+document.querySelector("#mess").addEventListener("change", function () {
+  mainContent_send.classList.add("hiden")
+  recieve.style.opacity = 0;
+  var audio = document.getElementById('audio');
+  mainContent_text.innerHTML = "";
+ 
+
+  for (let i = 0; i < timeouts.length; i++) {
+    clearTimeout(timeouts[i]);
+  }
+
+
+    if (this.checked == true) {
+
+audio.play()
+        document.querySelector(".content").classList.add("actived")
+        const splitMainContentLetter = mainContentLetter.split("");
+        
+
+        for (let i = 0; i < splitMainContentLetter.length; i++) {
+          timeouts.push(setTimeout(() => {
+            if (this.checked == true) {
+              mainContent_text.innerHTML += splitMainContentLetter[i];
+              if (i == splitMainContentLetter.length - 1) {
+                  setTimeout(()=>{
+                    recieve.style.opacity = 1;
+                    mainContent_send.classList.remove("hiden")
+                    mainContent_send_header.innerHTML = ""
+                },3000)
+                document.querySelector(".img1").setAttribute("style", "opacity: 1; transition: .5s");
+              }
+            }
+            
+          }, 50 * i));
+        }
+        
+
+    } else {
+
+      for (let i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+        document.querySelector(".content").classList.remove("actived")
+        document.querySelector(".img1").setAttribute("style", "opacity: 0; transition: .5s")
+        mainContent_text.innerHTML = "";
+        mainContent_send_header.innerHTML = ""
+        mainContent_send.classList.add("hiden")
+        recieve.style.opacity = 0;
+    }
+})
+
+
+
+  </script>
+
+
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase , ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBrR9L4wzGRVwq09ontMdrmR0H8vMEBiv8",
+    authDomain: "minnie-fbccd.firebaseapp.com",
+    databaseURL: "https://minnie-fbccd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "minnie-fbccd",
+    storageBucket: "minnie-fbccd.appspot.com",
+    messagingSenderId: "654222078964",
+    appId: "1:654222078964:web:84e66615ad8de02b6e7fa1",
+    measurementId: "G-EL7SKXF05Y"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  // const database = getDatabase(app);
+
+  
+  function writeUserData(value) {
+  let now = (new Date()).toLocaleString()
+  const db = getDatabase(app);
+    set(ref(db, '/' +`${now}`), {
+    value: value,
+    });
+  }
+
+
+  document.querySelector(".mainContent_button").addEventListener("click", ()=>{
+    let text = document.querySelector(".mainContent_textarea").value;
+    if(text != ""){
+      writeUserData(text)
+      swal({
+        title: "Thank You!",
+        text: "Cảm ơn bạn vì lời nhắn gửi!",
+        icon: "./img/byebye.png",
+      });
+      document.querySelector(".mainContent_textarea").value = "";
+    }else{
+      swal({
+        title: "!!!",
+        icon: "./img/tt.png",
+      });
+
+    }
+  })
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>August</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href=" main.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <img
+          src="./img/shy.png"
+          alt=""
+        />
+        <h2 class="question ">Bạn đã sẵn sàng đón nhận tình cảm chưaaaa</h2>
+        <div class="btn-group">
+          <button class="yes-btn">Chưa</button>
+          <button class="no-btn">Đã sẵn sàng</button>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  *::selection {
+    background: rgb(53, 240, 231);
+    color: #fff;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(53, 240, 231);
+  }
+
+  .wrapper {
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  i {
+    font-size: 7.5em;
+    color: rgb(53, 240, 231);
+    border: 5px solid transparent;
+    outline: 3px solid rgb(53, 240, 231);
+    border-radius: 50%;
+  }
+  h2 {
+    font-size: 2em;
+    color: rgb(53, 240, 231);
+    margin: 15px 0;
+  }
+  .btn-group {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  button {
+    position: absolute;
+    width: 150px;
+    height: inherit;
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 30px;
+    border: 2px solid rgb(53, 240, 231);
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  button:nth-child(1) {
+    margin-right: -200px;
+    color: rgb(53, 240, 231);
+  }
+  button:nth-child(2) {
+    margin-left: -200px;
+    background: rgb(53, 240, 231);
+  }
+</style>
+<script>
+  const wrapper = document.querySelector('.wrapper')
+  const body = document.querySelector('body')
+  const question = document.querySelector('.question')
+  const yesBtn = document.querySelector('.yes-btn')
+  const noBtn = document.querySelector('.no-btn')
+  const wrapperRect = wrapper.getBoundingClientRect()
+  const noBtnRect = noBtn.getBoundingClientRect()
+
+  const bodyWidth = body.offsetWidth - 200
+  const bodyHeight = body.offsetHeight - 200
+
+  yesBtn.addEventListener('mouseover', () => {
+    let x = Math.floor(Math.random() * bodyWidth)
+    let y = Math.floor(Math.random() * bodyHeight)
+    yesBtn.style.left = x + 'px'
+    yesBtn.style.top = y + 'px'
+  })
+  noBtn.addEventListener('click', () => {
+    window.location.href = 'letter2.html'
+  })
+</script>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>August</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/insert.css"
+    />
+    <style>
+      .swal-icon--custom img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-content">
+        <form
+          class="form-container"
+          id="authForm"
+        >
+          <div
+            id="username"
+            class="content"
+          >
+            <label for="username">Nhập họ tên của bạn:</label>
+            <input
+              type="text"
+              class="usernameInput"
+              placeholder=""
+            />
+            <br />
+            <div class="footer-content">
+              <button
+                type="button"
+                class="recieve"
+                onclick="checkUsername()"
+              >
+                <i class="fa-solid fa-paw"></i>
+              </button>
+            </div>
+          </div>
+          <div
+            id="passwordContainer"
+            class="content hiden"
+          >
+            <label for="password">Ngày sinh của bạn: </label>
+            <input
+              type="text"
+              id="birthday"
+              placeholder="dd/mm/yy"
+            />
+            <br />
+            <button
+              type="button"
+              class="recieve"
+              onclick="checkBirthday()"
+            >
+              <i class="fa-solid fa-paw"></i>
+            </button>
+          </div>
+
+          <div
+            id="emailContainer"
+            class="content hiden"
+          >
+            <label for="email">UID Game:</label>
+            <input
+              type="password"
+              id="email"
+              placeholder="Numberphone"
+            />
+            <br />
+            <button
+              type="button"
+              class="recieve"
+              onclick="checkEmail()"
+            >
+              <i class="fa-solid fa-paw"></i>
+            </button>
+          </div>
+
+          <div
+            id="favoritefood"
+            class="content hiden"
+          >
+            <label for="favoritefood">Your favorite hero:</label>
+            <label
+              for="bundau"
+              class="radio-label"
+            >
+              Zata
+              <input
+                type="checkbox"
+                id="bundau"
+                name="favoritefood"
+                value="bundau"
+              />
+            </label>
+            <label
+              for="tom"
+              class="radio-label"
+            >
+              Iggy
+              <input
+                type="checkbox"
+                id="tom"
+                name="favoritefood"
+                value="tom"
+              />
+            </label>
+
+            <label
+              for="socola"
+              class="radio-label"
+            >
+              Krixi
+              <input
+                type="checkbox"
+                id="socola"
+                name="favoritefood"
+                value="socola"
+              />
+            </label>
+
+            <label
+              for="pizza"
+              class="radio-label"
+            >
+              Natalia
+              <input
+                type="checkbox"
+                id="pizza"
+                name="favoritefood"
+                value="pizaa"
+              />
+            </label>
+            <label
+              for="bunbo"
+              class="radio-label"
+            >
+              Dirak
+              <input
+                type="checkbox"
+                id="bunbo"
+                name="favoritefood"
+                value="bunbo"
+              />
+            </label>
+            <label
+              for="kem"
+              class="radio-label"
+            >
+              Yue
+              <input
+                type="checkbox"
+                id="kem"
+                name="favoritefood"
+                value="kem"
+              />
+            </label>
+            <label
+              for="nemnuong"
+              class="radio-label"
+            >
+              Kahlii
+              <input
+                type="checkbox"
+                id="nemnuong"
+                name="favoritefood"
+                value="nemnuong"
+              />
+            </label>
+            <br />
+            <button
+              type="button"
+              class="recieve"
+              onclick="checkFavorite()"
+            >
+              <i class="fa-solid fa-paw"></i>
+            </button>
+          </div>
+          <div
+            id="checkSelect"
+            class="content hiden"
+          >
+            <img
+              src="./img/cat.png"
+              alt=""
+            />
+            <label for="namex">Bạn có thể ước 1 điều ước ở đây</label>
+            <label>(Chỉ có 1 mình bạn biết thôi)</label>
+            <input
+              type="text"
+              id="namex"
+              placeholder="FirstName"
+            />
+            <br />
+            <button
+              type="button"
+              class="recieve"
+              onclick="CheckEx()"
+            >
+              <i class="fa-solid fa-paw"></i>
+            </button>
+          </div>
+        </form>
+        <img
+          class="myAI"
+          id="randomimg"
+          alt=""
+        />
+      </div>
+      <div
+        id="errorForm"
+        class="fe"
+      >
+        <p id="error-message">Sai thông tin rùiii !</p>
+        <img
+          id="randomimger"
+          alt=""
+        /><br />
+        <button
+          type="button"
+          class="erbt"
+          onclick="hideErrorForm()"
+        >
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+    </div>
+    <script src="./js/sweetalert.min.js"></script>
+    <script src="./js/insert.js"></script>
+  </body>
+</html>
